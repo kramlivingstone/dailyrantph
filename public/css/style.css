@@ -1,0 +1,349 @@
+* {
+	font-family: 'Questrial', sans-serif;
+	font-size: 16px;
+}
+
+
+.navbar {
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid;
+}
+
+/*.navbar-brand a {
+	color:black;
+	border-bottom: 2px solid black;
+}
+
+.navbar-brand a:hover {
+	text-decoration: none;
+}*/
+
+
+#navbar {
+	margin-top: 50px;
+}
+
+#navbar a {
+	color: black;
+}
+
+
+/*.navbar-brand a {
+	color: black;
+	font-weight: bold;
+}
+*/
+.navbar-brand {
+	height: 150px;
+	max-width: 150px;
+	padding: 0;
+	margin: 0;
+}
+
+.navbar-brand img {
+	height: 100%;
+	width: 100%;
+}
+
+/*.well {
+	display: none;
+}*/
+
+.active a {
+	background: white;
+}
+
+.tab-content {
+	margin-bottom: 60px;
+}
+
+.comment {
+	border: none;
+	box-shadow: none;
+
+}
+
+.comment:focus {
+	box-shadow: none;
+}
+
+#sideLine,
+#commentLine {
+	border-color: #E3D2B8;
+}
+
+.showMoreline {
+	margin: 10px 0;
+	padding:0;
+}
+
+#dropdownLine {
+	margin:0;
+	padding:0;
+}
+
+.postTime,
+.commentTime {
+	font-size: 11px;
+	color: #323A45;
+}
+
+#dropdownMenu:hover {
+	background: transparent;
+}
+
+#dropdownMenu:focus {
+	background: transparent;
+}
+
+.dropdown-menu {
+	box-shadow: none;
+}
+
+/* PANEL */
+
+.panel {
+	border-radius: 0;
+}
+
+
+.panel-heading,
+.panel-footer {
+	background-color: white;
+}
+
+
+.reactionCount ul,
+.reactionMenu ul {
+	padding-left: 15px;
+}
+
+.reactionCount ul li,
+.reactionMenu ul li {
+	display: inline-block;
+	list-style-type: none;
+	
+}
+
+.username-row ul {
+	padding: 0;
+	margin: 0;
+}
+
+.username-row ul li {
+	display: inline-block;
+	list-style-type: none;
+}
+
+.imageContainer {
+	max-width: 50px;
+}
+
+.imageContainer img {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+}
+
+.userName {
+	margin-bottom: 20px;
+}
+
+.panel-heading {
+	padding: 5px;
+}
+
+#postSetting {
+	margin-right: 10px;
+}
+
+#postSetting ul {
+	border-radius: 0;
+}
+
+#postSetting ul li {
+	display: block;
+	text-align: center;
+	padding: 5px;
+}
+
+#postSetting ul li a:hover {
+	background: transparent;
+}
+
+.comments {
+	margin: 15px;
+}
+
+.navImage {
+	max-width: 30px;
+	margin-top: 10px;
+}
+
+.navImage img {
+	height: 100%;
+	width: 100%;
+}
+
+.feedFilter {
+	padding: 0;
+}
+
+.feedFilter li {
+	list-style-type: none;
+	display: block;
+	padding: 5px;
+}
+
+.well {
+	border: none;
+	border-radius: 0;
+}
+
+.postSettingLine {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+#feedWell {
+	background: #ECF0F1;
+}
+
+.panel-default > .panel-heading {
+	background-color: white;
+}
+
+.nav-pills li.active a:hover,
+.nav-pills > li.active > a:focus,
+.nav-pills li.active a {
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	border-radius: 0;
+}
+
+.nav-pills li a:hover,
+.nav-pills > li > a:focus,
+.nav-pills li a {
+	background-color: white;
+	color: black;
+}
+
+#uploadImg {
+	display: none;
+}
+
+#btnPost {
+	float: right;
+}
+
+#file-upload:hover {
+	cursor: pointer;
+}
+
+#frmTextArea {
+	padding: 0;
+	margin: 0;
+}
+
+#imgPreview {
+	height: 150px;
+	width: 150px;
+	padding: 10px;
+	display: none;
+}
+
+#imgWell {
+	display: none;
+}
+
+#loadImg {
+	display: none;
+}
+
+#postFrmGroup {
+margin-top: 10px;
+}
+
+#showComments {
+	margin: 0;
+}
+
+.jumbotron {
+	background: url("/images/adventure.jpeg");
+	background-position: center;
+	min-height: 200px;
+	border-radius: 0;
+}
+
+#classComments {
+	border: none;
+	display: none;
+	list-style-type: none;
+}
+
+.callUser:hover {
+	cursor: pointer;
+}
+
+.showMoreSection:hover {
+	/*background: #ECF0F1;*/
+	cursor: pointer;
+}
+
+
+.commentShow {
+	background: #ECF0F1;
+}
+.commentShow:hover {
+	/*background: #ECF0F1;*/
+	cursor: pointer;
+	text-decoration: none;
+}
+#loginPanel {
+	border-right: 2px solid black;
+ 	border-bottom: 2px solid  black;
+}
+#loginForm {
+	max-width: 400px;
+	margin: 50px auto;
+}
+
+.container-login {
+	margin: 100px auto;
+}
+
+.userRants {
+/*	font-family: 'Heebo', sans-serif;*/
+	font-size: 19px;
+	font-weight: bold;
+	color: black;
+}
+
+.userAvatar {
+	max-width: 100px;
+
+}
+
+.userAvatar img {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	object-position: center;
+	border: 2px solid black;
+	border-radius: 50%;
+}
+
+#btnEditProfile {
+	margin-left: 20px;
+	margin-bottom: 15px;
+}
+
+.userDetails {
+	padding: 20px;
+}
+
+
