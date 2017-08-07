@@ -1,0 +1,1 @@
+<li id="likeCount<?php echo nl2br(e($post->id)); ?>"><?php echo nl2br(e($likes)); ?> Likes</li>
