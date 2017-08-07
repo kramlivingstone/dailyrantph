@@ -16,6 +16,10 @@
 					<input type="name" name="name" class="form-control" id="name" required>
 				</div>
 				<div class="form-group">
+					<label for="username">Username:</label>
+					<input type="text" name="username" class="form-control" id="username" required>
+				</div>
+				<div class="form-group">
 					<label for="email">Email:</label>
 					<input type="email" name="email" class="form-control" id="email" required> 
 				</div>

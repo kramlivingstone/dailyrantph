@@ -6,19 +6,16 @@
 	<div class="container">
 		<div class="col-md-3">
 			<div class="userAvatar">
-				<img src="{{asset('avatar/Pang.jpg')}}">
+				<img src="/avatar/{{$users->path}}" alt="Avatar">
 			</div>
 		</div>
 		<div class="col-md-9 userDetails">
 			<div>
-				@foreach ($posts as $postName)
-				@endforeach
-				<h1>{{$postName->user->name}}<span>
-				<a href="#" type="button" class="btn btn-default" id="btnEditProfile">Edit Profile</a></span></h1>
+				<h1>{{$users->name}}<span>
+				<a href="/profile/{{$users->id}}/edit" type="button" class="btn btn-default" id="btnEditProfile">Edit Profile</a></span></h1>
 			</div>
 			<div>
-				<span>{{$postName->post}}</span>
-			
+				<span></span>
 			</div>
 		</div>
 	</div>
@@ -32,10 +29,22 @@
 
 	<div class="tab-content clearfix">
 		<div class="tab-pane well active" id="postWell">
-		@foreach ($posts as $post)
+		@if(count($userPosts) == 0)
+		  <div class="panel panel-danger">
+		    <div class="panel-body">
+		    @if(Auth::user()->id == $users->id)
+		      Create you first post
+		    @else
+		      {{$users->name}} haven't posted anything yet.
+		    @endif
+		    </div>
+		  </div>
+		@else
+		@foreach ($userPosts as $post)
 				@include('posts.post')
 				@include('modals.postedit')
 		@endforeach
+		@endif
 		</div>
 	</div>
 </div>

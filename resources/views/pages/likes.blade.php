@@ -1,0 +1,1 @@
+<li id="likeCount{{$post->id}}">{{ $likes }} Likes</li>

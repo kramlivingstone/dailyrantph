@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'email', 'password',
     ];
 
     /**
@@ -29,5 +31,19 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+
+    // public function getProfilePicture()
+    // {
+    //     if(! $this->attributes['path'])
+    //     {
+    //         return '/avatar/mad.png';
+    //     }
+
+    //     return $this->atrributes['path'];
+    // }
+
+    public function likes(){
+        return $this->hasMany(Likes::class);
     }
 }

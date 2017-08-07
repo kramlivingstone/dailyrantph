@@ -25,7 +25,6 @@ function getCaret(el) {
 
 // var commentId = $('.comment').attr("id");
 
-
 $('.comment').keypress(function (event) {
     var postId = (this.id).substring(10);
     var token = $('#token').val();
@@ -47,23 +46,10 @@ $('.comment').keypress(function (event) {
             _token : token,
             comment : comment,
         }, function(data) {
-
-
             $('#showComments'+postId).html(data);
             $('#showMoreSection'+postId).show();
             $('.li-comments'+postId).slice(-3).show();
-            $('#txtComment'+postId).focus();
             $('#txtComment'+postId).val('');
-            
-
-            // if($('.li-comments'+postId+':hidden').length == 0){
-            //    $('#showMoreSection'+postId).hide();
-            //    $('.li-comments'+postId).show();
-            // } else {
-            //     $('#showMoreSection'+postId).show();
-            //     $('.li-comments'+postId).slice(-3).show();
-            // }     
-
         });
     }
 });
@@ -73,9 +59,9 @@ function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             
-            reader.onload = function (e) {
 
-            	$('#imgWell').show();
+            reader.onload = function (e) {
+            	$('#imgWell').slideDown();
             	$('#imgPreview').show();
                 $('#imgPreview').attr('src', e.target.result);
             }
@@ -85,6 +71,24 @@ function readURL(input) {
 
 $("#uploadImg").change(function(){
     readURL(this);
+});
+
+
+function readProfileURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+
+            reader.onload = function (e) {
+                $('#imgDisplay').show();
+                $('#imgDisplay').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+$("#displayPhoto").change(function(){
+    readProfileURL(this);
 });
 
 
@@ -119,3 +123,24 @@ $('.showComments').each(function(){
         }
     });
 });
+
+function like(id)
+{
+    if($('#like'+id).attr('name') == 'like'){
+        $.ajax({
+            url: '/like/',
+            method: 'GET',
+            data: {
+                post_id : id,
+            },
+            success: function(data){
+                $('#like'+id).html('Unlike');
+                $('#like'+id).attr('name','unlike');
+                $('#likeCount'+id).html(data); 
+            }
+        });
+    }
+}
+
+
+

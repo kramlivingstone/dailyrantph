@@ -6,6 +6,8 @@ use Auth;
 
 class Post extends Model
 {
+
+	
     public function comments()
     {
     	return $this->hasMany(Comment::class)->oldest();
@@ -23,6 +25,11 @@ class Post extends Model
 			'user_id' => Auth::user()->id,
 			'comment' => $comment
 		]);
+    }
+
+    public function likes()
+    {
+    	return $this->hasMany(Likes::class);
     }
 
 }

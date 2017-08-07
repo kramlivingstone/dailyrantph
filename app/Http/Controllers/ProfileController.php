@@ -9,9 +9,11 @@ use Auth;
 class ProfileController extends Controller
 {
     public function index($id){
-    	$posts = User::find($id)->posts;
+    	$users = User::find($id);
+    	$userPosts = User::find($id)->posts;
 
-    	return view('pages.profile', compact('posts'));
+    	return view('pages.profile', compact('users','userPosts'));
     }
 
+   
 }

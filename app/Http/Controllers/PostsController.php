@@ -40,13 +40,22 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
        
+        if($file = $request->file('uploadImg'))
+        {
+            $name = $file->getClientOriginalName();
+
+            $file->move('images',$name); 
+
+        } else {
+            $name = "NULL";
+        }
         Post::create([
             'user_id' => auth()->id(),
-            'post' => request('post')
-
+            'post' => request('post'),
+            'path' => $name
         ]);
 
         return back();
@@ -98,7 +107,11 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        $posts = Post::find($id);
+       
+        $posts->delete();
         
+        return back();
 
     }
 }

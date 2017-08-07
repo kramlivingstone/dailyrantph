@@ -37,4 +37,17 @@ Route::get('/logout', 'SessionsController@destroy');
 
 Route::get('/profile/{id}','ProfileController@index');
 
+Route::get('/delete/{id}','PostsController@destroy');
+
+Route::get('/profile/{id}/edit','EditProfileController@index');
+
+Route::patch('/edit/{id}','EditProfileController@update');
+
+
+Route::patch('/edit/{id}/changePassword','EditProfileController@updatePassword');
+
+Route::get('/like/{id}','LikesController@like');
+
+Route::get('/unlike/{id}','LikesController@unlike');
+
 

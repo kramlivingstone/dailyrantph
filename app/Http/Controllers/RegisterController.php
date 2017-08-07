@@ -25,6 +25,8 @@ class RegisterController extends Controller
     	$this->validate(request(),[
     		'name' => 'required',
 
+    		'username' => 'required',
+
     		'email' => 'required|email',
 
     		'password' => 'required|confirmed'
@@ -33,6 +35,7 @@ class RegisterController extends Controller
    
     	$user = User::create([
     		'name' => request('name'),
+    		'username' => request('username'),
 			'email' => request('email'),
 			'password' => bcrypt(request('password'))
     	]);

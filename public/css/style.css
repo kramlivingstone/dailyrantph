@@ -7,8 +7,7 @@
 .navbar {
 	background-color: transparent;
 	border-radius: 0;
-	border: none;
-	border-bottom: 1px solid;
+	
 }
 
 /*.navbar-brand a {
@@ -22,7 +21,7 @@
 
 
 #navbar {
-	margin-top: 50px;
+	margin-top: 15px;
 }
 
 #navbar a {
@@ -36,8 +35,8 @@
 }
 */
 .navbar-brand {
-	height: 150px;
-	max-width: 150px;
+	height: 100px;
+	max-width: 100px;
 	padding: 0;
 	margin: 0;
 }
@@ -45,6 +44,11 @@
 .navbar-brand img {
 	height: 100%;
 	width: 100%;
+	object-fit: cover;
+}
+
+#sideCard a{
+	color: black;
 }
 
 /*.well {
@@ -153,6 +157,19 @@
 
 .panel-heading {
 	padding: 5px;
+}
+
+#post {
+	border-radius: 0;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+
+}
+
+#post:focus {
+	box-shadow: none;
 }
 
 #postSetting {
@@ -332,9 +349,18 @@ margin-top: 10px;
 	height: 200px;
 	width: 200px;
 	object-fit: cover;
-	object-position: center;
 	border: 2px solid black;
 	border-radius: 50%;
+}
+
+
+#sideCardImg {
+	height: 70px;
+	width: 70px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 2px solid black;
+	margin-right: 15px;
 }
 
 #btnEditProfile {
@@ -347,3 +373,62 @@ margin-top: 10px;
 }
 
 
+#sideCard {
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+}
+
+.posts {
+	max-width: auto;
+}
+
+.posts img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+
+#editUserPanel {
+	margin: 0 auto;
+	padding: 0;
+	max-width: 700px;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+}
+#editUserPanel .panel-body .col-md-3,
+#editUserPanel .panel-body {
+	margin:0;
+	padding:0;
+}
+
+
+
+/*.tab-pane {
+	border-left: 1px solid black;
+}*/
+
+.nav-stacked li a {
+	padding: 20px 15px;
+}
+
+.nav-stacked a.active {
+	
+	font-weight: bold;
+}
+
+.nav-stacked a:hover {
+	
+}
+
+#imgDisplay {
+	height: 250px;
+	width: 250px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 3px solid black;
+}
+
+.postPanel {
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+}

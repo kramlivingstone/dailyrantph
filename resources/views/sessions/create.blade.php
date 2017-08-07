@@ -11,8 +11,8 @@
 				<form id="loginForm" method="POST" action="/login">
 					{{csrf_field()}}
 					<div class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" name="email" id="email" class="form-control">
+						<label for="username">Username:</label>
+						<input type="username" name="username" id="username" class="form-control">
 					</div>
 
 					<div class="form-group">

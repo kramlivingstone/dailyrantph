@@ -4,7 +4,7 @@
 	<div class="username-row">
 		<ul>
 			<li class="imageContainer">
-				<img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="avatar">
+				<img src="/avatar/{{$post->user->path}}" alt="avatar">
 			</li>
 			<li class="userName">
 				<a href="/profile/{{$post->user->id}}">{{ $post->user->name}} </a>&middot;<span class="postTime"> {{$post->updated_at->diffForHumans()}}</span>
@@ -14,21 +14,27 @@
 				<a href="#" class="pull-right dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
 				<ul class="dropdown-menu">
 					<li><a href="#" data-toggle="modal" data-target="#myModal{{$post->id}}">Edit</a></li>
-					<li><a href="#">Delete</a></li>
+					<li><a href="/delete/{{$post->id}}">Delete</a></li>
 				</ul>
 			</li>
 			@endif
 		</ul>
 	</div>
 </div>
-<a href="#">
+
 <div class="panel-body">
-	<p class="userRants">{{ $post->post }}</p>
+	<div class="posts">
+		<p class="userRants">{{ $post->post }}</p>
+		@if($post->path != "NULL")
+		<a href='{{asset("images/$post->path")}}'><img src='{{asset("images/$post->path")}}'></a>
+		@endif
+	</div>
 </div>
-</a>
+
 <div class="reactionCount">
 	<ul>
-	<li>{{ $post->comments->count() }} Comments</li>
+	<li id="likeCount{{$post->id}}">{{ count($post->likes) }} Likes</li>
+	<li>{{ count($post->comments) }} Comments</li>
 	</ul>
 </div>
 <hr class="postSettingLine">
@@ -41,9 +47,16 @@
 		<li>
 			<a href="#"><i class="fa fa-chevron-down" aria-hidden="true"> </i></a>
 		</li> -->
+		 @if(!Auth::user()->likes()->where('post_id',$post->id)->first())
 		<li>
-			<a href="#">Like</a>
+			<a name="like" role="button" id="like{{$post->id}}" onclick="like('{{$post->id}}');">Like</a>
 		</li>
+		@else
+		<li>
+			<a href="/unlike/{{$post->id}}">Unlike</a>
+		</li>
+		@endif
+
 		<li>&middot;</li>
 		<li>
 			<a class="callUser" id="{{$post->id}}" type="button"> Reply</a>
@@ -63,7 +76,7 @@
 		@foreach($post->comments as $comment)
 		<li class="list-group-item li-comments{{$post->id}}" id="classComments">
 			
-				<a href="#">{{$comment->user->name}}</a>
+				<a href="/profile/{{$comment->user->id}}">{{$comment->user->name}}</a>
 				<span>{{$comment->comment}}</span>
 				<div class="commentOption">
 					<div class="commentTime"><a href="#">Like </a> &middot;<a href="#"> Reply</a>
@@ -82,7 +95,7 @@
 
 </div>
 <div class="panel-footer">
-		<form method="post" id="test{{$post->id}}" action="/posts/{{$post->id}}/comments" data-id="{{$post->id}}">
+		<form method="POST" id="test{{$post->id}}" action="/posts/{{$post->id}}/comments">
 			{{csrf_field()}}
 		      <div class="form-group">
 		        <textarea rows="1" class="form-control comment" name="txtComment" id="txtComment{{$post->id}}" placeholder="Add a comment"></textarea>

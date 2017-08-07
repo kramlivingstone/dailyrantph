@@ -17,7 +17,7 @@
 
    <!-- Google Fonts -->
 
- <link href="https://fonts.googleapis.com/css?family=Heebo:900|Questrial" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Heebo:900|Questrial" rel="stylesheet">
   
     <!-- Custom styles for this template -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
