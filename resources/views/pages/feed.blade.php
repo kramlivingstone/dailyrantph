@@ -26,7 +26,7 @@
     <hr id="sideLine">
      <ul class="feedFilter">
         <li><a href="#">Trending</a></li>
-        <li><a href="#">Most Recent</a></li>
+        <li><a href="#">Most Recent Kupal</a></li>
      </ul>
      </div>
   </div>
