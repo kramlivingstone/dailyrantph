@@ -1,6 +1,6 @@
 @foreach($post->comments as $comment)
 		<li class="list-group-item li-comments{{$post->id}}" id="classComments">
-			
+				<img src="/avatar/{{$comment->user->path}}">
 				<a href="#">{{$comment->user->name}}</a>
 				<span>{{$comment->comment}}</span>
 				<div class="commentOption">

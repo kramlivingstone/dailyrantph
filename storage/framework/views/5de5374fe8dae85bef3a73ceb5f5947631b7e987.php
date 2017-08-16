@@ -49,7 +49,7 @@
 		</li> -->
 		 <?php if(!Auth::user()->likes()->where('post_id',$post->id)->first()): ?>
 		<li>
-			<a name="like" role="button" id="like<?php echo nl2br(e($post->id)); ?>" onclick="like('<?php echo nl2br(e($post->id)); ?>');">Like</a>
+			<a href="/like/<?php echo nl2br(e($post->id)); ?>" name="like" role="button" id="like<?php echo nl2br(e($post->id)); ?>" onclick="like('<?php echo nl2br(e($post->id)); ?>');">Like</a>
 		</li>
 		<?php else: ?>
 		<li>
@@ -75,7 +75,7 @@
 	<ul class="list-group showComments" id="showComments<?php echo nl2br(e($post->id)); ?>">
 		<?php $__currentLoopData = $post->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<li class="list-group-item li-comments<?php echo nl2br(e($post->id)); ?>" id="classComments">
-			
+				<img src="/avatar/<?php echo nl2br(e($comment->user->path)); ?>">
 				<a href="/profile/<?php echo nl2br(e($comment->user->id)); ?>"><?php echo nl2br(e($comment->user->name)); ?></a>
 				<span><?php echo nl2br(e($comment->comment)); ?></span>
 				<div class="commentOption">

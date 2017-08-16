@@ -1,6 +1,6 @@
 <?php $__currentLoopData = $post->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<li class="list-group-item li-comments<?php echo nl2br(e($post->id)); ?>" id="classComments">
-			
+				<img src="/avatar/<?php echo nl2br(e($comment->user->path)); ?>">
 				<a href="#"><?php echo nl2br(e($comment->user->name)); ?></a>
 				<span><?php echo nl2br(e($comment->comment)); ?></span>
 				<div class="commentOption">

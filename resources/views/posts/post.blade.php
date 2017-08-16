@@ -49,7 +49,7 @@
 		</li> -->
 		 @if(!Auth::user()->likes()->where('post_id',$post->id)->first())
 		<li>
-			<a name="like" role="button" id="like{{$post->id}}" onclick="like('{{$post->id}}');">Like</a>
+			<a href="/like/{{$post->id}}" name="like" role="button" id="like{{$post->id}}" onclick="like('{{$post->id}}');">Like</a>
 		</li>
 		@else
 		<li>
@@ -75,7 +75,7 @@
 	<ul class="list-group showComments" id="showComments{{$post->id}}">
 		@foreach($post->comments as $comment)
 		<li class="list-group-item li-comments{{$post->id}}" id="classComments">
-			
+				<img src="/avatar/{{$comment->user->path}}">
 				<a href="/profile/{{$comment->user->id}}">{{$comment->user->name}}</a>
 				<span>{{$comment->comment}}</span>
 				<div class="commentOption">

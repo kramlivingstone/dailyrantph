@@ -17,8 +17,8 @@
 
    <!-- Google Fonts -->
 
-   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Heebo:900|Questrial" rel="stylesheet">
+  
     <!-- Custom styles for this template -->
     <link href="<?php echo nl2br(e(asset('css/style.css'))); ?>" rel="stylesheet">
 
@@ -38,6 +38,7 @@
 
   <body>
  
+  
   <?php echo $__env->make("layouts.nav", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   <div class="container">
     <div class="row">

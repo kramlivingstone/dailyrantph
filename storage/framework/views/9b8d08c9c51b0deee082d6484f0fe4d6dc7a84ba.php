@@ -4,31 +4,37 @@
 	<div class="username-row">
 		<ul>
 			<li class="imageContainer">
-				<img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="avatar">
+				<img src="/avatar/<?php echo nl2br(e($post->user->path)); ?>" alt="avatar">
 			</li>
 			<li class="userName">
-				<a href="#"><?php echo nl2br(e($post->user->name)); ?> </a>&middot;<span class="postTime"> <?php echo nl2br(e($post->updated_at->diffForHumans())); ?></span>
+				<a href="/profile/<?php echo nl2br(e($post->user->id)); ?>"><?php echo nl2br(e($post->user->name)); ?> </a>&middot;<span class="postTime"> <?php echo nl2br(e($post->updated_at->diffForHumans())); ?></span>
 			</li>
 			<?php if(auth()->user()->name == $post->user->name): ?>
 			<li class="dropdown pull-right" id="postSetting">
 				<a href="#" class="pull-right dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
 				<ul class="dropdown-menu">
 					<li><a href="#" data-toggle="modal" data-target="#myModal<?php echo nl2br(e($post->id)); ?>">Edit</a></li>
-					<li><a href="#">Delete</a></li>
+					<li><a href="/delete/<?php echo nl2br(e($post->id)); ?>">Delete</a></li>
 				</ul>
 			</li>
 			<?php endif; ?>
 		</ul>
 	</div>
 </div>
-<a href="#">
+
 <div class="panel-body">
-	<p><?php echo nl2br(e($post->post)); ?></p>
+	<div class="posts">
+		<p class="userRants"><?php echo nl2br(e($post->post)); ?></p>
+		<?php if($post->path != "NULL"): ?>
+		<a href='<?php echo nl2br(e(asset("images/$post->path"))); ?>'><img src='<?php echo nl2br(e(asset("images/$post->path"))); ?>'></a>
+		<?php endif; ?>
+	</div>
 </div>
-</a>
+
 <div class="reactionCount">
 	<ul>
-	<li><?php echo nl2br(e($post->comments->count())); ?> Comments</li>
+	<li id="likeCount<?php echo nl2br(e($post->id)); ?>"><?php echo nl2br(e(count($post->likes))); ?> Likes</li>
+	<li><?php echo nl2br(e(count($post->comments))); ?> Comments</li>
 	</ul>
 </div>
 <hr class="postSettingLine">
@@ -41,9 +47,16 @@
 		<li>
 			<a href="#"><i class="fa fa-chevron-down" aria-hidden="true"> </i></a>
 		</li> -->
+		 <?php if(!Auth::user()->likes()->where('post_id',$post->id)->first()): ?>
 		<li>
-			<a href="#">Like</a>
+			<a href="/like/<?php echo nl2br(e($post->id)); ?>" name="like" role="button" id="like<?php echo nl2br(e($post->id)); ?>" onclick="like('<?php echo nl2br(e($post->id)); ?>');">Like</a>
 		</li>
+		<?php else: ?>
+		<li>
+			<a href="/unlike/<?php echo nl2br(e($post->id)); ?>">Unlike</a>
+		</li>
+		<?php endif; ?>
+
 		<li>&middot;</li>
 		<li>
 			<a class="callUser" id="<?php echo nl2br(e($post->id)); ?>" type="button"> Reply</a>
@@ -62,8 +75,8 @@
 	<ul class="list-group showComments" id="showComments<?php echo nl2br(e($post->id)); ?>">
 		<?php $__currentLoopData = $post->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<li class="list-group-item li-comments<?php echo nl2br(e($post->id)); ?>" id="classComments">
-			
-				<a href="#"><?php echo nl2br(e($comment->user->name)); ?></a>
+				<img src="/avatar/<?php echo nl2br(e($comment->user->path)); ?>">
+				<a href="/profile/<?php echo nl2br(e($comment->user->id)); ?>"><?php echo nl2br(e($comment->user->name)); ?></a>
 				<span><?php echo nl2br(e($comment->comment)); ?></span>
 				<div class="commentOption">
 					<div class="commentTime"><a href="#">Like </a> &middot;<a href="#"> Reply</a>
@@ -83,7 +96,7 @@
 
 </div>
 <div class="panel-footer">
-		<form method="post" id="test<?php echo nl2br(e($post->id)); ?>" action="/posts/<?php echo nl2br(e($post->id)); ?>/comments" data-id="<?php echo nl2br(e($post->id)); ?>">
+		<form method="POST" id="test<?php echo nl2br(e($post->id)); ?>" action="/posts/<?php echo nl2br(e($post->id)); ?>/comments">
 			<?php echo nl2br(e(csrf_field())); ?>
 
 		      <div class="form-group">
