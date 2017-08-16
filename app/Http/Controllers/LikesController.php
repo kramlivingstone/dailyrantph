@@ -17,8 +17,9 @@ class LikesController extends Controller
    		$like->post_id = $id;
    		$like->save();
 
-   		$likes = Post::find($id)->likes->count();
-   		return view('pages.likes',compact('likes'));
+   		// $likes = Post::find($id)->likes->count();
+   		// return view('pages.likes',compact('likes'));
+         return back();
    }
    public function unlike(Request $request, $id)
    {
@@ -26,7 +27,6 @@ class LikesController extends Controller
    		$unlike->delete();
 
 
-   		$likes = Post::find($id)->likes->count();
-   		return view('pages.likes',compact('likes'));
+   		return back();
    }
 }

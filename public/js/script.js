@@ -47,7 +47,6 @@ $('.comment').keypress(function (event) {
             comment : comment,
         }, function(data) {
             $('#showComments'+postId).html(data);
-            $('#showMoreSection'+postId).show();
             $('.li-comments'+postId).slice(-3).show();
             $('#txtComment'+postId).val('');
         });

@@ -6,7 +6,9 @@ use Auth;
 
 class Post extends Model
 {
-
+    protected $fillable = [
+        'id', 'user_id', 'post', 'path',
+    ];
 	
     public function comments()
     {
